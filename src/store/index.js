@@ -4,7 +4,7 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import students from "./utilities/students";
-// DON"T FORGET TO IMPORT CAMPUS TOO
+import campuses from "./utilities/campuses";
 
 const rootReducer = combineReducers({students});
 const logger = createLogger({ collapsed: true });
