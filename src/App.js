@@ -44,7 +44,6 @@ class AppContainer extends Component {
 
 const mapState = (state) => {
   return {
-    counter: state.counter,
     students: state.students,
     campuses: state.campuses
   }
