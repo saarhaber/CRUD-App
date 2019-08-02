@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+import AppView from "./AppView"
+import {fetchStudentsThunk, removeStudentThunk, addStudentThunk } from "./store/utilities/students";
+
+
+class AppContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+    this.props.fetchAllStudents();
+  }
+
+  removeStudent = (id) => {
+    this.props.removeStudent(id);
+  }
+
+  addStudent = (student) => {
+    this.props.addStudent(student);
+  }
+
+  render() {
+    return (
+      <AppView students={this.props.students} removeStudent={this.removeStudent} addStudent={this.addStudent} />
+    )
+  }
 }
 
-export default App;
+const mapState = (state) => {
+  return {
+    counter: state.counter,
+    students: state.students
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {
+    fetchAllStudents: () => dispatch(fetchStudentsThunk()),
+    removeStudent: (id) => dispatch(removeStudentThunk(id)),
+    addStudent: (student) => dispatch(addStudentThunk(student))
+  }
+}
+export default connect(mapState, mapDispatch)(AppContainer);
