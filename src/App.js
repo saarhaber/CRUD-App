@@ -5,9 +5,16 @@ import { connect } from "react-redux";
 import AppView from "./AppView"
 import {fetchStudentsThunk, removeStudentThunk, addStudentThunk } from "./store/utilities/students";
 import {fetchCampusesThunk, removeCampusThunk, addCampusThunk } from "./store/utilities/campuses";
+
+//PAGE IMPORTS
+
 import HomePage from './components/HomePage';
 import AllCampuses from './components/AllCampuses';
 import AddCampus from './components/AddCampus';
+import SingleCampus from './components/SingleCampus';
+import AllStudents from './components/AllStudents';
+import AddStudent from './components/AddStudent';
+
 console.log(Route)
 class AppContainer extends Component {
   constructor() {
@@ -41,11 +48,18 @@ class AppContainer extends Component {
     const HomeComponent = () => (<HomePage/>);
     const AllCampusesComponent = () => (<AllCampuses />);
     const AddCampusComponent = () => (<AddCampus />);
+    const AddStudentComponent = () => (<AddStudent />);
+    const SingleCampusComponent = () => (<SingleCampus />);
+    const AllStudentsComponent = () => (<AllStudents />);
+
     return (
       <Router basename ="/reactrouter">
         <Route exact path="/" render={HomeComponent} />
         <Route exact path="/allcampuses" render={AllCampusesComponent}/>
         <Route exact path="/addcampus" render={AddCampusComponent}/>
+        <Route exact path="/addStudent" render={AddStudentComponent}/>
+        <Route exact path="/SingleCampus" render={SingleCampusComponent}/>
+        <Route exact path="/AllStudents" render={AllStudentsComponent}/>
       </Router>
     )
   }
