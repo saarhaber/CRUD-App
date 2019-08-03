@@ -36,8 +36,8 @@ class AppContainer extends Component {
     this.props.addStudent(student);
   }
 
-  removeCampus = (id) => {
-    this.props.removeCampus(id);
+  removeCampus = (campuses, id) => {
+    this.props.removeCampus(campuses, id);
   }
 
   addCampus = (campus) => {
@@ -85,7 +85,7 @@ const mapDispatch = (dispatch) => {
     removeStudent: (id) => dispatch(removeStudentThunk(id)),
     addStudent: (student) => dispatch(addStudentThunk(student)),
     fetchAllCampuses: () => dispatch(fetchCampusesThunk()),
-    removeCampus: (id) => dispatch(removeCampusThunk(id)),
+    removeCampus: (campuses, id) => dispatch(removeCampusThunk(campuses, id)),
     addCampus: (campus) => dispatch(addCampusThunk(campus)),
     singleCampus: (id) => dispatch(singleCampusThunk(id)),
     grabCampus: (campus) => dispatch(grabCampusThunk(campus))
