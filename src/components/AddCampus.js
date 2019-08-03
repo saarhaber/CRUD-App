@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import './AddCampus.css';
 
 class AddCampus extends Component {
   constructor () {
@@ -24,16 +25,17 @@ class AddCampus extends Component {
       "imageUrl": "https://c8.alamy.com/comp/D0XA1N/college-students-walking-and-playing-guitar-on-campus-in-autumn-D0XA1N.jpg"
     }
     this.props.addCampus(campusToAdd)
-    console.log("Submit works, Campus with name ",this.state.campusName," would have been added.")
+    alert("Successfully added Campus")
   }
 
   render () {
     return (
       <div className="Content">
+        <h1 className = "headline">Add Campus </h1>
           <div>
-            <Link to="/AllCampuses">Back to All Campuses</Link>
+            <Link className="leftLink" to="/AllCampuses">Back to All Campuses</Link>
           </div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="form">
           <div>
             <label htmlFor="campusName">Campus Name: </label>
             <input type="text" name="campusName" onChange={this.handleChange} />
