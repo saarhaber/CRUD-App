@@ -5,7 +5,7 @@ import SingleCampus from './SingleCampus';
 import './AllCampuses.css';
 
 const AllCampuses = (props) => {
-  const { campuses, removeCampus, addCampus} = props;
+  const { campuses, removeCampus, singleCampus} = props;
     return (
       <div className ="allCampusContainer">
           <h1 className = "headline">All Campuses </h1>
@@ -19,14 +19,13 @@ const AllCampuses = (props) => {
                     <tr>
                     <img src={campus.imageUrl} width="75" height="75"></img><th>{campus.name}</th>
                     </tr>
+                    <tr>
                       <td>
                         <button className ="button" onClick={() => removeCampus(campus.id)}>Remove</button>
-                      </td>
+                      </td> 
                       <td>
-                      <button className ="button" onClick={console.log("THIS SHOULD BE GOING INTO SINGLE CAMPUS VIEW")}>View</button>
+                      <Link className="buttonV" onClick={() => singleCampus(campus.id)} to={`/campus/${campus.id}`}>View</Link>
                       </td>
-                    <tr>
-                      <td></td>
                     </tr>
                   </table>
                 </div>
