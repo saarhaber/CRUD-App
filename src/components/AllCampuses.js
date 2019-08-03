@@ -16,17 +16,27 @@ const AllCampuses = (props) => {
             {campuses.map(campus => 
                 <div>
                   <table className = "AcampusTable">
+                  <tbody>
                     <tr className="topBar">
-                    <img src={campus.imageUrl} width="75" height="75"></img><th className="campusName">{campus.name}</th><td><button className ="remove" onClick={() => removeCampus(campus.id)}>x</button></td>
+                      <td>
+                        <img src={campus.imageUrl} width="75" height="75"></img>
+                      </td>
+                      <td className="campusName">
+                        <p>{campus.name}</p>
+                      </td>
+                      <td>
+                        <button className ="remove" onClick={() => removeCampus(campus.id)}>x</button>
+                      </td>
                     </tr>
                     <tr className="address">
                       <td>
                       <Link className="buttonV" onClick={() => grabCampus(campus)} to={`/campus/${campus.id}`}>View</Link>
                       </td>
                       <td>
-                      <th>{campus.address}</th>
+                      <p>{campus.address}</p>
                       </td>
                     </tr>
+                    </tbody>
                   </table>
                 </div>
                 )}
