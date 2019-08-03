@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom';
+import SingleCampus from './SingleCampus';
 
 const AllCampuses = (props) => {
   const { campuses, removeCampus, addCampus} = props;
