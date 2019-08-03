@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom';
+import SingleCampus from './SingleCampus';
 
 class AllCampuses extends Component {
   constructor () {

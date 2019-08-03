@@ -9,6 +9,7 @@ class HomePage extends Component {
             This is the home page and it works
             </h1>
             <p><Link to="/allcampuses">All Campuses</Link></p>
+            <p><Link to="/allStudents">All Students</Link></p>
         </div>
     );
     }
