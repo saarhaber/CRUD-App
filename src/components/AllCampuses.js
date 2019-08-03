@@ -8,9 +8,10 @@ const AllCampuses = (props) => {
   const { campuses, removeCampus, addCampus} = props;
     return (
       <div className ="allCampusContainer">
-          <h1> This is all Campuses page and it works</h1>
-          <p><Link to="/">Home</Link></p>
-          <p><Link to="/addcampus">Add Campus</Link></p>
+          <h1 className = "headline">All Campuses </h1>
+          <div className="Links">
+          <Link className="leftLink" to="/">Home</Link><Link className="rightLink" to="/addcampus">Add Campus</Link>
+          </div>
           <div className ="campusContainer">
             {campuses.map(campus => 
                 <div>

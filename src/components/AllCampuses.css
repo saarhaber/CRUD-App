@@ -1,3 +1,41 @@
+.headline {
+    background-color: #212C4F;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    
+}
+.leftLink {
+    text-align: left;
+    justify-items: left;
+    margin-left: 10%;
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: #494F65;
+}
+.rightLink {
+    margin-left: 70%;
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: #494F65;
+}
 .campusTable {
     background-color: #212C4F;
     color: white;
@@ -46,6 +84,5 @@ img {
 .allCampusContainer {
     width: 100%;
     display: grid;
-    justify-items: center;
-    text-align: center;
+
 }
