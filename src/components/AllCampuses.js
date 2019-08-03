@@ -5,7 +5,7 @@ import SingleCampus from './SingleCampus';
 import './AllCampuses.css';
 
 const AllCampuses = (props) => {
-  const { campuses, removeCampus, grabCampus} = props;
+  const { campuses, removeCampus, grabCampus, grabFromID} = props;
     return (
       <div className ="allCampusContainer">
           <h1 className = "headline">All Campuses </h1>
@@ -21,10 +21,10 @@ const AllCampuses = (props) => {
                     </tr>
                     <tr>
                       <td>
-                        <button className ="button" onClick={() => removeCampus(campus.id)}>Remove</button>
+                        <button className ="button" onClick={() => removeCampus(campuses, campus.id)}>Remove</button>
                       </td> 
                       <td>
-                      <Link className="buttonV" onClick={() => grabCampus(campus)} to={`/campus/${campus.id}`}>View</Link>
+                      <Link className="buttonV" onClick={() => grabFromID(campuses, campus.id)} to={`/campus/${campus.id}`}>View</Link>
                       </td>
                     </tr>
                   </table>

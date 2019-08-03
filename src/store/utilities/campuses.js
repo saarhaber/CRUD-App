@@ -11,11 +11,17 @@ const fetchCampuses = (campuses) => {
     }
 }
 
-const removeCampus = (id) => {
+const removeCampus = (campuses, id) => {
+    var temp = [...campuses]
+    temp = temp.filter(campus => campus.id !== id)
+    for(let i = id-1; i < temp.length; i++){
+        temp[i].id--;
+    }
     return {
         type: REMOVE_CAMPUS,
-        payload: id
+        payload: temp
     }
+
 }
 
 const addCampus = (campus) => {
@@ -30,6 +36,7 @@ const singleCampus = (id) => {
         type: SINGLE_CAMPUS,
         payload: id
     }
+    
 }
 // THUNK CREATOR;
 export const fetchCampusesThunk = () => (dispatch) => {
@@ -68,8 +75,8 @@ export const fetchCampusesThunk = () => (dispatch) => {
     dispatch(fetchCampuses(arrayOfCampusesFromAPI))
 }
 
-export const removeCampusThunk = (id) => (dispatch) => {
-    let resolvedActionObject = removeCampus(id); 
+export const removeCampusThunk = (campuses, id) => (dispatch) => {
+    let resolvedActionObject = removeCampus(campuses, id); 
     dispatch(resolvedActionObject);
 }
 
@@ -89,7 +96,7 @@ export default (state = [], action) => {
         case FETCH_CAMPUSES:
             return action.payload;
         case REMOVE_CAMPUS:
-            return state.filter(campus => campus.id !== action.payload);
+            return action.payload;
         case ADD_CAMPUS:
             return [...state, action.payload];
         case SINGLE_CAMPUS:
