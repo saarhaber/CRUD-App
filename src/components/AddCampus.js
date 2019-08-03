@@ -23,7 +23,8 @@ class AddCampus extends Component {
     const campusToAdd = {
       "id": this.props.campuses.length + 1,
       "name": this.state.campusName,
-      "imageUrl": "https://c8.alamy.com/comp/D0XA1N/college-students-walking-and-playing-guitar-on-campus-in-autumn-D0XA1N.jpg"
+      "imageUrl": "https://c8.alamy.com/comp/D0XA1N/college-students-walking-and-playing-guitar-on-campus-in-autumn-D0XA1N.jpg",
+      "address":"695 Park Ave, New York, NY 10065"
     }
     this.props.addCampus(campusToAdd)
     alert("Successfully added Campus")
