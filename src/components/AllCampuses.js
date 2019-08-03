@@ -12,7 +12,7 @@ const AllCampuses = (props) => {
           <div className="Links">
           <Link className="leftLink" to="/">Home</Link><Link className="rightLink" to="/addcampus">Add Campus</Link>
           </div>
-          <div className ="campusContainer">
+          <div className ="allcampusContainer">
             {campuses.map(campus => 
                 <div>
                   <table className = "AcampusTable">

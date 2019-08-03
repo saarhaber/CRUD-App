@@ -16,18 +16,21 @@ class EditCampus extends Component {
                 Edit Campus
                 </h1>
                 <Link className="leftLink" to={`/campus/${this.state.campus.id}`}>Back</Link>
-                <div className="surroundTable">
+                <div className="surroundForm">
                     {console.log(this.state.campus)}
-                    <table className = "singlecampusTable">
+                    <form className = "singlecampusForm">
+                        <table>
                         <tbody>
                         <tr>
                             <td><img src={this.state.campus.imageUrl} width="150" height="150"></img> </td>    
                             <th className = "heading"> {this.state.campus.name}</th> 
                             <td>
-                                <Link className="cancel" to={`/campus/${this.state.campus.id}`}>Cancel</Link>
-                            </td>
-                            <td>
-                                <Link className="save">Save</Link>
+                                <tr>
+                                    <td><Link className="save">Save</Link></td>
+                                </tr>
+                                <tr>
+                                    <td><Link className="cancel" to={`/campus/${this.state.campus.id}`}>Cancel</Link></td>
+                                </tr>
                             </td>
                         </tr>
                         <tr>
@@ -45,7 +48,8 @@ class EditCampus extends Component {
                             </td>
                         </tr>
                         </tbody>
-                    </table>
+                        </table>
+                    </form>
                 </div>
             </div>
         );

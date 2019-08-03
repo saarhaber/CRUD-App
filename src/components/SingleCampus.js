@@ -16,7 +16,7 @@ class SingleCampus extends Component {
                 Campus Details
                 </h1>
                 <Link className="leftLink"to="/allcampuses">All Campuses</Link>
-                <div className="surroundTable">
+                <div className="surroundTableSingle">
                     {console.log(this.state.campus)}
                     <table className = "singlecampusTable">
                         <tbody>
