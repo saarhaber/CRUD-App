@@ -1,0 +1,109 @@
+.headline {
+    background-color: #212C4F;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    
+}
+.leftLinkH {
+    font-weight: normal;
+    margin-right: 200px;
+    margin-top: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 30px 30px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: #494F65;
+}
+.midtext {
+    text-align: center;
+}
+.Mid {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #212C4F;
+}
+
+
+.rightLinkH {
+    font-weight: normal;
+    margin-left: 200px;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 30px 30px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: #494F65;
+}
+.leftLinkH:Hover {
+    color: white;
+    background: rgb(40, 44, 56);
+}
+.rightLinkH:Hover {
+    color: white;
+    background: rgb(40, 44, 56);
+}
+.campusTable {
+    background-color: #212C4F;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 5px 16px;
+    width: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  
+.campusTable:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+img {
+    border-radius: 5px 5px 0 0;
+}
+.button {
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: rgba(102,152,203,1);
+}
+.button:active {
+    box-shadow: 0 0 #212C4F; background-color: #494F65;
+}
+.campusContainer {
+    width: 100%;
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+}
+.allCampusContainer {
+    width: 100%;
+    display: grid;
+
+}
