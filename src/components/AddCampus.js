@@ -19,7 +19,7 @@ class AddCampus extends Component {
   handleSubmit = (submit) => {
     submit.preventDefault()
     const campusToAdd = {
-      "id": this.props.campuses.length,
+      "id": this.props.campuses.length + 1,
       "name": this.state.campusName,
       "imageUrl": "https://c8.alamy.com/comp/D0XA1N/college-students-walking-and-playing-guitar-on-campus-in-autumn-D0XA1N.jpg"
     }
