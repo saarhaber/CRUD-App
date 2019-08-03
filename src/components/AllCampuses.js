@@ -17,7 +17,7 @@ const AllCampuses = (props) => {
                 <div>
                   <table className = "AcampusTable">
                     <tr className="topBar">
-                    <img src={campus.imageUrl} width="75" height="75"></img><th>{campus.name}</th><td><button className ="remove" onClick={() => removeCampus(campus.id)}>x</button></td>
+                    <img src={campus.imageUrl} width="75" height="75"></img><th className="campusName">{campus.name}</th><td><button className ="remove" onClick={() => removeCampus(campus.id)}>x</button></td>
                     </tr>
                     <tr className="address">
                       <td>

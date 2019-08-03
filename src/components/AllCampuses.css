@@ -1,4 +1,10 @@
 
+.campusName{
+    background-color: #376C96;
+    font-size: 18px;
+    border-radius: 8px;
+    width: 60%;
+}
 .address{
     width: 100%;
     font-weight: normal;
@@ -62,6 +68,8 @@ img {
     border-radius: 5px 5px 0 0;
 }
 .remove {
+    margin-left: 40%;
+    margin-bottom: 150%;
     text-decoration: none;
     color: white;
     padding: 2px 8px;
@@ -75,7 +83,7 @@ img {
     background: rgb(228, 36, 29);
 }
 .remove:active {
-    box-shadow: 0 0 #212C4F; background-color: #494F65;
+    box-shadow: 0 0 #212C4F; background-color: rgb(131, 22, 18);
 }
 .buttonV {
     font-weight: bold;
@@ -90,11 +98,11 @@ img {
     border-radius: 4px;
     text-shadow: 0 1px 0 rgba(0,0,0,0.15);
     color: white;
-    background: #2C9E2C;
+    background: rgba(102,152,203,1);
 }
 .buttonV:active {
     box-shadow: 0 0 #212C4F; 
-    background-color: #494F65;
+    background-color: rgb(56, 93, 131);
 }
 .campusContainer {
     width: 100%;
