@@ -49,9 +49,10 @@ class AppContainer extends Component {
     const AllCampusesComponent = () => (<AllCampuses campuses=
       {this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus}/>);
     const AddCampusComponent = () => (<AddCampus campuses = {this.props.campuses} addCampus={this.addCampus}/>);
-    const AddStudentComponent = () => (<AddStudent />);
+    const AddStudentComponent = () => (<AddStudent students = {this.props.students} addStudent={this.addStudent}/>);
     const SingleCampusComponent = () => (<SingleCampus />);
-    const AllStudentsComponent = () => (<AllStudents />);
+    const AllStudentsComponent = () => (<AllStudents students=
+      {this.props.students} removeStudent={this.removeStudent} addStudent={this.addStudent} />);
 
     return (
       <Router basename ="/reactrouter">
