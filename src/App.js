@@ -46,7 +46,8 @@ class AppContainer extends Component {
 
   render() {
     const HomeComponent = () => (<HomePage/>);
-    const AllCampusesComponent = () => (<AllCampuses />);
+    const AllCampusesComponent = () => (<AllCampuses campuses=
+      {this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus}/>);
     const AddCampusComponent = () => (<AddCampus />);
     const AddStudentComponent = () => (<AddStudent />);
     const SingleCampusComponent = () => (<SingleCampus />);
