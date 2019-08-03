@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-    
+import './HomePage.css'
 class HomePage extends Component {
     render() {
     return (
-        <div className="Content">
-            <h1>
-            This is the home page and it works
+        <div >
+            <h1 className="headline">
+            Home
             </h1>
-            <p><Link to="/allcampuses">All Campuses</Link></p>
-            <p><Link to="/AllStudents">All Students</Link></p>
+            <p className="Mid"><Link className="leftLinkH" to="/allcampuses">All Campuses</Link>Welcome<Link className="rightLinkH"to="/AllStudents">All Students</Link></p>
+            <div className="midtext">
+            <p>
+                On this website you'll be able to view campuses and students where you can add, view, edit, or remove any campus or students.
+            </p>
+            <p>
+                This website will be using Node, Express, React, Redux, PostgreSQL, and Sequelize, to build a RESTful full-stack web application to manage students and campuses.
+            </p>
+            <p>
+                For some reason the Home text and the Welcome does not align perfectly in the center and it hurts to look at.
+            </p>
+            </div>
         </div>
     );
     }
