@@ -12,12 +12,18 @@ class AddCampus extends Component {
     }
   }
 
-  handleChange = (change) => {
-    this.setState({campusName: change.value})
+  handleChange = (event) => {
+    this.setState({campusName: event.target.value})
   }
 
   handleSubmit = (submit) => {
     submit.preventDefault()
+    const campusToAdd = {
+      "id": this.props.campuses.length,
+      "name": this.state.campusName,
+      "imageUrl": "https://c8.alamy.com/comp/D0XA1N/college-students-walking-and-playing-guitar-on-campus-in-autumn-D0XA1N.jpg"
+    }
+    this.props.addCampus(campusToAdd)
     console.log("Submit works, Campus with name ",this.state.campusName," would have been added.")
   }
 
@@ -30,7 +36,7 @@ class AddCampus extends Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="campusName">Campus Name: </label>
-            <input type="text" name="campusName" onChange={this.handleChange} value={this.state.campusName} />
+            <input type="text" name="campusName" onChange={this.handleChange} />
           </div>
           <button>Add Campus</button>
         </form>
