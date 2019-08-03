@@ -1,0 +1,89 @@
+.headline {
+    background-color: #212C4F;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    text-align: center;
+    
+}
+.leftLink {
+    text-align: left;
+    justify-items: left;
+    margin-left: 10%;
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: #494F65;
+}
+.surroundTable {
+    background-color: #212C4F;
+    width: 97%;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.singlecampusTable {
+    background-color: #376C96;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 5px 16px;
+    width: 100%;
+
+    margin-top: 10px;
+}
+th td {
+    padding: 15px;
+}
+.heading {
+    text-align: left;
+    width: 91%;
+    font-size: 30px;
+}
+img {
+    border-radius: 5px 5px 0 0;
+}
+.button {
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: rgba(102,152,203,1);
+}
+.button:active {
+    box-shadow: 0 0 #212C4F; background-color: #494F65;
+}
+.campusContainer {
+    width: 500px;
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+}
+.allCampusContainer {
+    width: 100%;
+    display: grid;
+
+}

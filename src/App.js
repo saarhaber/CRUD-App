@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import {fetchStudentsThunk, removeStudentThunk, addStudentThunk } from "./store/utilities/students";
 import {fetchCampusesThunk, removeCampusThunk, addCampusThunk, singleCampusThunk } from "./store/utilities/campuses";
+import {grabCampusThunk} from "./store/utilities/singlecampus";
 
 //PAGE IMPORTS
 
@@ -46,12 +47,13 @@ class AppContainer extends Component {
   singleCampus = (id) => {
     this.props.singleCampus(id);
   }
+  grabCampus = (campus) => {
+    this.props.grabCampus(campus);
+  }
   render() {
     const HomeComponent = () => (<HomePage/>);
-    const AllCampusesComponent = () => (<AllCampuses campuses=
-      {this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus} singleCampus={this.singleCampus}/>);
+    const AllCampusesComponent = () => (<AllCampuses campuses={this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus} grabCampus={this.grabCampus}/>);
     const AddCampusComponent = () => (<AddCampus campuses = {this.props.campuses} addCampus={this.addCampus}/>);
-    const SingleCampusComponent = () => (<SingleCampus campuses={this.props.campuses} singleCampus={this.singleCampus}/>);
     const AddStudentComponent = () => (<AddStudent students = {this.props.students} addStudent={this.addStudent}/>);
     const AllStudentsComponent = () => (<AllStudents students={this.props.students} removeStudent={this.removeStudent} addStudent={this.addStudent} />);
     return (
@@ -61,7 +63,7 @@ class AppContainer extends Component {
           <Route exact path="/allcampuses" render={AllCampusesComponent}/>
           <Route exact path="/addcampus" render={AddCampusComponent}/>
           <Route exact path="/addStudent" render={AddStudentComponent}/>
-          <Route exact path="/campus/:id" render={SingleCampusComponent}/>
+          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} campus ={this.props.singlecampus}/>}/>/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
         </Switch>
       </Router>
@@ -72,7 +74,8 @@ class AppContainer extends Component {
 const mapState = (state) => {
   return {
     students: state.students,
-    campuses: state.campuses
+    campuses: state.campuses,
+    singlecampus: state.singlecampus
   }
 }
 
@@ -84,7 +87,8 @@ const mapDispatch = (dispatch) => {
     fetchAllCampuses: () => dispatch(fetchCampusesThunk()),
     removeCampus: (id) => dispatch(removeCampusThunk(id)),
     addCampus: (campus) => dispatch(addCampusThunk(campus)),
-    singleCampus: (id) => dispatch(singleCampusThunk(id))
+    singleCampus: (id) => dispatch(singleCampusThunk(id)),
+    grabCampus: (campus) => dispatch(grabCampusThunk(campus))
   }
 }
 export default connect(mapState, mapDispatch)(AppContainer);
