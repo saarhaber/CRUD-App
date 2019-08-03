@@ -43,13 +43,16 @@ class AppContainer extends Component {
     this.props.addCampus(campus)
   }
 
+  singleCampus = (id) => {
+    this.props.singleCampus(id);
+  }
   render() {
     const HomeComponent = () => (<HomePage/>);
     const AllCampusesComponent = () => (<AllCampuses campuses=
       {this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus} singleCampus={this.singleCampus}/>);
     const AddCampusComponent = () => (<AddCampus campuses = {this.props.campuses} addCampus={this.addCampus}/>);
     const AddStudentComponent = () => (<AddStudent />);
-    const SingleCampusComponent = () => (<SingleCampus singleCampus={this.singleCampus}/>);
+    const SingleCampusComponent = () => (<SingleCampus campuses={this.props.campuses} singleCampus={this.singleCampus}/>);
     const AllStudentsComponent = () => (<AllStudents />);
 
     return (
@@ -59,7 +62,7 @@ class AppContainer extends Component {
           <Route exact path="/allcampuses" render={AllCampusesComponent}/>
           <Route exact path="/addcampus" render={AddCampusComponent}/>
           <Route exact path="/addStudent" render={AddStudentComponent}/>
-          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props}/>}/>
+          <Route exact path="/campus/:id" render={SingleCampusComponent}/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
         </Switch>
       </Router>

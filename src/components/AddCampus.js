@@ -17,6 +17,7 @@ class AddCampus extends Component {
     this.setState({campusName: event.target.value})
   }
 
+  
   handleSubmit = (submit) => {
     submit.preventDefault()
     const campusToAdd = {

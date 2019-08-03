@@ -16,7 +16,8 @@ class SingleCampus extends Component {
                 </h1>
                 <p><Link to="/allcampuses">All Campuses</Link></p>
                 <div>
-                    <p>CURRENT CAMPUS ID IS {this.props.match.params.id}</p>
+                {console.log(this.props)}
+                    {/* <p>CURRENT CAMPUS ID IS {this.props.match.params.id}</p> */}
                 </div>
             </div>
         );
