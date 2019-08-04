@@ -21,7 +21,7 @@ const AllCampuses = (props) => {
                       <td>
                         <img src={campus.imageUrl} width="75" height="75"></img>
                       </td>
-                      <td className="campusName">
+                      <td className="allCampusName">
                         <p>{campus.name}</p>
                       </td>
                       <td>
