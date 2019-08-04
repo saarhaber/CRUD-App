@@ -25,7 +25,7 @@ const AllCampuses = (props) => {
                         <p>{campus.name}</p>
                       </td>
                       <td>
-                        <button className ="remove" onClick={() => removeCampus(campus.id)}>x</button>
+                        <button className ="remove" onClick={() => removeCampus(campuses, campus.id)}>x</button>
                       </td>
                     </tr>
                     <tr className="address">
