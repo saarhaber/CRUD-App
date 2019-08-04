@@ -1,9 +1,10 @@
 
-.campusName{
+.allCampusName{
     background-color: #376C96;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 8px;
-    width: 60%;
+    text-align: center;
+    font-weight: bold;
 }
 .address{
     width: 100%;
@@ -104,7 +105,7 @@ img {
     box-shadow: 0 0 #212C4F; 
     background-color: rgb(56, 93, 131);
 }
-.campusContainer {
+.allcampusContainer {
     width: 100%;
     display: grid;
     display: flex;
@@ -113,7 +114,7 @@ img {
     transition: 0.3s;
     border-radius: 5px;
     padding: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .allCampusContainer {
     width: 100%;

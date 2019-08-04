@@ -1,3 +1,15 @@
+.addressinfo {
+    margin-left: 20px;
+    margin-bottom: 50%;
+    font-size: 18px;
+    color: #212C4F;
+    font-weight: bold;
+}
+.information {
+    background-color: white;
+    height: 200px;
+    border-radius: 6px;
+    background-color: #84C8ED;}
 .headline {
     background-color: #212C4F;
     width: 100%;
@@ -22,7 +34,7 @@
     color: white;
     background: #494F65;
 }
-.surroundTable {
+.surroundTableSingle {
     background-color: #212C4F;
     width: 97%;
     margin-left: 10px;
@@ -41,7 +53,6 @@
     border-radius: 5px;
     padding: 5px 16px;
     width: 100%;
-
     margin-top: 10px;
 }
 th td {
@@ -49,26 +60,27 @@ th td {
 }
 .heading {
     text-align: left;
-    width: 91%;
+    width: 88%;
     font-size: 30px;
 }
 img {
     border-radius: 5px 5px 0 0;
 }
-.button {
+.editButton {
     text-decoration: none;
+    font-weight: bold;
     color: white;
-    padding: 2px 8px;
+    padding: 10px 10px;
     display: inline-block;
     position: relative;
-    border: 1px solid rgba(0,0,0,0.21);
+    border: 1px solid rgba(0, 0, 0, 0);
     border-bottom: 4px solid rgba(0,0,0,0.21);
     border-radius: 4px;
     text-shadow: 0 1px 0 rgba(0,0,0,0.15);
     color: white;
-    background: rgba(102,152,203,1);
+    background: rgb(29, 55, 95);
 }
-.button:active {
+.editButton:active {
     box-shadow: 0 0 #212C4F; background-color: #494F65;
 }
 .campusContainer {
