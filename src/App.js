@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import {fetchStudentsThunk, removeStudentThunk, addStudentThunk } from "./store/utilities/students";
-import {fetchCampusesThunk, removeCampusThunk, addCampusThunk, singleCampusThunk } from "./store/utilities/campuses";
+import {fetchCampusesThunk, removeCampusThunk, addCampusThunk, singleCampusThunk, editCampusThunk} from "./store/utilities/campuses";
 import {grabCampusThunk} from "./store/utilities/singlecampus";
 
 //PAGE IMPORTS
@@ -29,6 +29,9 @@ class AppContainer extends Component {
     this.props.fetchAllCampuses();
   }
 
+  editCampus =(campuses, name, address, id)=> {
+    this.props.editCampus(campuses, name, address, id);
+  }
   removeStudent = (id) => {
     this.props.removeStudent(id);
   }
@@ -66,7 +69,7 @@ class AppContainer extends Component {
           <Route exact path="/addStudent" render={AddStudentComponent}/>
           <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} campus ={this.props.singlecampus}/>}/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
-         <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus}/>}/>
+         <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus} campuses ={this.props.campuses} editCampus={this.editCampus}/>}/>
         </Switch>
       </Router>
     )
@@ -83,6 +86,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    editCampus: (campuses, name, address, id) => dispatch(editCampusThunk(campuses, name, address, id)),
     fetchAllStudents: () => dispatch(fetchStudentsThunk()),
     removeStudent: (id) => dispatch(removeStudentThunk(id)),
     addStudent: (student) => dispatch(addStudentThunk(student)),

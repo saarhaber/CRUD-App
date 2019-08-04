@@ -17,14 +17,20 @@ class EditCampus extends Component {
     campusAddressChange =(event)=>{
         this.setState({ newaddress: event.target.value})
     }
+    handleEdit = (submit) => {
+        console.log("CAMPUSES: ",this.props.campuses," NEW NAME: ",this.state.newname," NEW ADDRESS: ", this.state.newaddress," CURRENT ID: ",this.props.campus.id)
+        this.props.editCampus(this.props.campuses, this.state.newname, this.state.newaddress, this.props.campus.id)
+        alert("Saved!")
+      }
     render(){
         return (
             <div>
                 <h1 className ="headline">
                 Edit Campus
                 </h1>
+                <Link className="leftLink" to={`/campus/${this.state.campus.id}`}>Back</Link>
                 <div className="surroundForm">
-                    {console.log(this.state.campus)}
+                    {console.log("ALL PROPS ARE HEREEE:",this.props)}
                     <form className = "singlecampusForm">
                         <table>
                         <tbody>
@@ -33,7 +39,7 @@ class EditCampus extends Component {
                             <th className = "heading"><input className="campusNameField" value={this.state.newname} onChange={this.campusNameChange} type="text" placeholder={this.state.campus.name}></input></th>
                             <td>
                                 <tr>
-                                    <td><Link className="save">Save</Link></td>
+                                    <td><Link className="save" onClick={this.handleEdit}>Save</Link></td>
                                 </tr>
                                 <tr>
                                     <td><Link className="cancel" to={`/campus/${this.state.campus.id}`}>Cancel</Link></td>

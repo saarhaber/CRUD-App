@@ -1,4 +1,8 @@
 
+.campusID{
+    font-size: 13px;
+    color: rgba(102,152,203,1);
+}
 .allCampusName{
     background-color: #376C96;
     font-size: 16px;
