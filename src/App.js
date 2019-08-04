@@ -16,7 +16,6 @@ import AllStudents from './components/AllStudents';
 import AddStudent from './components/AddStudent';
 import EditCampus from './components/EditCampus';
 
-console.log(Route)
 class AppContainer extends Component {
   constructor() {
     super();
@@ -67,7 +66,7 @@ class AppContainer extends Component {
           <Route exact path="/allcampuses" render={AllCampusesComponent}/>
           <Route exact path="/addcampus" render={AddCampusComponent}/>
           <Route exact path="/addStudent" render={AddStudentComponent}/>
-          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} campus ={this.props.singlecampus}/>}/>
+          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} campuses = {this.props.campuses}campus ={this.props.singlecampus}/>}/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
          <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus} campuses ={this.props.campuses} editCampus={this.editCampus}/>}/>
         </Switch>

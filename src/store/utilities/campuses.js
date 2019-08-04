@@ -33,7 +33,6 @@ const removeCampus = (campuses, id) => {
     }
     return {
         type: REMOVE_CAMPUS,
-        payload: id,
         payload: temp
     }
 }

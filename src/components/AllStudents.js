@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import SingleStudent from "./SingleStudent";
+// import SingleStudent from "./SingleStudent";
 import './AllStudents.css';
     
 
 const AllStudents = (props) => {
-    const { students, removeStudent, addStudent } = props;
+    // const { students, removeStudent, addStudent } = props;
+    const { students, removeStudent} = props;
     return (
         <div className="allStudentsContainer">
             <h1 className = "headline">All Students</h1>
@@ -17,7 +19,7 @@ const AllStudents = (props) => {
                 <div>
                   <table className = "studentTable">
                     <tr>
-                    <img src={student.imageUrl} width="75" height="75"></img><th>{student.name}</th>
+                    <img src={student.imageUrl} width="75" height="75" alt=""></img><th>{student.name}</th>
                     </tr>
                       <td>
                         <button className ="button" onClick={() => removeStudent(student.id)}>Remove</button>

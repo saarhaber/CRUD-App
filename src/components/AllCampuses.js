@@ -1,25 +1,26 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+//import React, { Component } from 'react'
+import React from 'react'
+//import { Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom';
-import SingleCampus from './SingleCampus';
+// import SingleCampus from './SingleCampus';
 import './AllCampuses.css';
 
 const AllCampuses = (props) => {
   const { campuses, removeCampus, grabCampus} = props;
     return (
-      <div className ="allCampusContainer">
+      <div className ="allCampusContainer" key="campuscontainer">
           <h1 className = "headline">All Campuses </h1>
-          <div className="Links">
+          <div className="Links" key="links">
           <Link className="leftLink" to="/">Home</Link><Link className="rightLink" to="/addcampus">Add Campus</Link>
           </div>
-          <div className ="allcampusContainer">
+          <div className ="allcampusContainer" key="innercontainer">
             {campuses.map(campus => 
-                <div>
+                <div key={campus.id}>
                   <table className = "AcampusTable">
                   <tbody>
                     <tr className="topBar">
                       <td>
-                        <img src={campus.imageUrl} width="75" height="75"></img>
+                        <img src={campus.imageUrl} width="75" height="75" alt=""></img>
                       </td>
                       <td className="allCampusName">
                         <p>{campus.name}</p>
