@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import SingleStudent from "./SingleStudent";
+// import SingleStudent from "./SingleStudent";
 import './AllStudents.css';
     
-
 const AllStudents = (props) => {
     const { students, removeStudent, grabStudent } = props;
     return (

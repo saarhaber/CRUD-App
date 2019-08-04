@@ -11,6 +11,20 @@ class EditCampus extends Component {
             newaddress : this.props.campus.address
         }
       }
+
+
+      componentDidUpdate(){
+        if(this.state.campus.id === undefined){
+            this.setState({
+                campus : this.props.campuses[this.props.match.params.id-1],
+                newname : this.props.campuses
+                [this.props.match.params.id-1].name,
+                newaddress : this.props.campuses
+                [this.props.match.params.id-1].address
+         })
+    }
+    }
+
     campusNameChange =(event)=>{
         this.setState({ newname: event.target.value})
     }
@@ -35,7 +49,7 @@ class EditCampus extends Component {
                         <table>
                         <tbody>
                         <tr>
-                            <td><img src={this.state.campus.imageUrl} width="150" height="150"></img> </td>    
+                            <td><img src={this.state.campus.imageUrl} width="150" height="150" alt=""></img> </td>    
                             <th className = "heading"><input className="campusNameField" value={this.state.newname} onChange={this.campusNameChange} type="text" placeholder={this.state.campus.name}></input></th>
                             <td>
                                 <tr>
