@@ -35,6 +35,9 @@ const AllCampuses = (props) => {
                       <td>
                       <p>{campus.address}</p>
                       </td>
+                      <td className="campusID">
+                        ID: {campus.id}
+                      </td>
                     </tr>
                     </tbody>
                   </table>
