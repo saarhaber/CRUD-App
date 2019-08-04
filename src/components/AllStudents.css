@@ -6,6 +6,20 @@
     text-align: center;
     
 }
+
+
+.studnetID{
+    font-size: 13px;
+    color: rgba(102,152,203,1);
+}
+.allStudentName{
+    background-color: #376C96;
+    font-size: 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .leftLink {
     text-align: left;
     justify-items: left;
@@ -85,4 +99,23 @@ img {
     width: 100%;
     display: grid;
 
+}
+.buttonV {
+    font-weight: bold;
+    vertical-align: top;
+    text-align: center;
+    font-size: 11px;
+    text-decoration: none;
+    color: white;
+    padding: 5px 23px;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    color: white;
+    background: rgba(102,152,203,1);
+}
+.buttonV:active {
+    box-shadow: 0 0 #212C4F; 
+    background-color: rgb(56, 93, 131);
 }
