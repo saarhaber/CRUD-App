@@ -7,24 +7,30 @@ class AddStudent extends Component {
     super()
     this.state = {
       user: {
-        studentName: ''
+        firstName: '',
+        lastName: ''
       },
       redirect: false
     }
   }
 
-  handleChange = (change) => {
-    this.setState({studentName: change.value})
+  handleChangeFirst = (change) => {
+    this.setState({firstName: change.target.value})
+  }
+  handleChangeLast = (change) => {
+    this.setState({lastName: change.target.value})
   }
 
   handleSubmit = (submit) => {
     submit.preventDefault()
     const studentToAdd = {
       "id": this.props.students.length + 1,
-      "name": this.state.studentName,
+      "firstName": this.state.firstName,
+      "lastName": this.state.lastName,
       "imageUrl": "https://i.imgur.com/N9Koe2G.jpg"
     }
     this.props.addStudent(studentToAdd)
+    console.log(studentToAdd);
     alert("Successfully added Student")
   }
 
@@ -37,8 +43,11 @@ class AddStudent extends Component {
           </div>
         <form onSubmit={this.handleSubmit} className="form">
           <div>
-            <label htmlFor="studentName">Student Name: </label>
-            <input type="text" name="studentName" onChange={this.handleChange} value={this.state.studentName} />
+            <label htmlFor="firstName">Student First Name: </label>
+            <input type="text" name="firstName" onChange={this.handleChangeFirst} value={this.state.firstName} /> <br></br>
+            <label htmlFor="lastName">Student Last Name: </label> 
+            <input type="text" name="lastName" onChange={this.handleChangeLast} value={this.state.lastName} />
+            
           </div>
           <button>Add Student</button>
         </form>
