@@ -1,24 +1,25 @@
+
+
+.studentID{
+    font-size: 13px;
+    color: rgba(102,152,203,1);
+}
+.allStudentName{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    border-radius: 8px;
+    height: 60%;
+    width: 55%;
+    text-align: center;
+}
 .headline {
     background-color: #212C4F;
     width: 100%;
     padding: 15px;
     color: white;
     text-align: center;
+    
 }
-
-
-.studnetID{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    border-radius: 8px;
-}
-.allStudentName{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    border-radius: 8px;
-    text-align: center;
-}
-
 .leftLink {
     text-align: left;
     justify-items: left;
@@ -49,39 +50,43 @@
     color: white;
     background: #494F65;
 }
-.studentTable {
+.AstudentTable {
     background-color: #212C4F;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    border-radius: 10px;
-    padding: 10px 10px 10px 10px;
-    width: 50px;
+    border-radius: 5px;
+    padding: 5px 16px;
+    width: 300px;
+    height: 140px;
     margin-left: 10px;
     margin-top: 10px;
+    padding-bottom: 10px;
   }
   
-.studentTable:hover {
-    box-shadow:  8px 16px 0 rgba(0,0,0,0.2);
+.AstudentTable:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 img {
     border-radius: 5px 5px 0 0;
 }
-.studentContainer {
-    width: 100%;
-    display: grid;
+.remove {
+    margin-left: 40%;
+    margin-bottom: 150%;
+    text-decoration: none;
+    color: white;
+    padding: 2px 8px;
     display: inline-block;
     position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
     color: white;
-    transition: 0.3s;
-    border-radius: 5px;
-    padding: 10px;
-    margin-left: 10px;
+    background: rgb(228, 36, 29);
 }
-.allStudentsContainer {
-    width: 100%;
-    display: grid;
-
+.remove:active {
+    box-shadow: 0 0 #212C4F; background-color: rgb(131, 22, 18);
 }
 .buttonV {
     text-decoration: none;
@@ -99,22 +104,17 @@ img {
     box-shadow: 0 0 #212C4F; 
     background-color: rgb(56, 93, 131);
 }
-
-
-.button {
-    text-decoration: center;
+.allstudentContainer {
+    width: 100%;
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     color: white;
-    padding: 2px 8px;
-    display: inline-block;
-    position: relative;
-    border: 1px solid rgba(0,0,0,0.21);
-    border-bottom: 4px solid rgba(0,0,0,0.21);
-    border-radius: 4px;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
-    color: white;
-    background: rgba(102,152,203,1);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding-top: 10px;
 }
-.button:active {
-    box-shadow: 0 0 #212C4F;
-    background-color: #494F65;
+.allstudentsContainer {
+    width: 100%;
+    display: grid;
 }
