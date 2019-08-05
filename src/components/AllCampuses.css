@@ -117,8 +117,7 @@ img {
     color: white;
     transition: 0.3s;
     border-radius: 5px;
-    padding: 10px;
-    margin-left: 20px;
+    padding-top: 10px;
 }
 .allCampusContainer {
     width: 100%;
