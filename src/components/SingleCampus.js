@@ -6,7 +6,9 @@ class SingleCampus extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            campus : this.props.campus
+            campus : this.props.campus,
+            students : this.props.students,
+            realstudents : []
         }
       }
 
@@ -19,9 +21,31 @@ class SingleCampus extends Component {
                 campus : this.props.campuses[this.props.match.params.id-1]
          })
     }
+    if(this.state.realstudents.length === 0){
+        console.log("fired off");
+        let temp = [...this.props.students];
+        temp.filter(student => this.state.campus.id === student.campusId);
+        console.log(temp.filter(student => this.state.campus.id !== student.campusId));
+        this.setState({
+            realstudents : temp.filter(student => this.state.campus.id !== student.campusId)
+     })
+}
     }
 
+    test(){
+        if(this.state.realstudents.length === 0){
+            console.log("fired off");
+            let temp = [...this.props.students];
+            temp.filter(student => this.state.campus.id === student.campusId);
+            console.log(temp.filter(student => this.state.campus.id !== student.campusId));
+            this.setState({
+                realstudents : temp.filter(student => this.state.campus.id === student.campusId)
+         })
+    }
+    }
     render(){
+        console.log(this.state.students)
+        this.test();
         return (
             <div>
                 <h1 className ="headline">
@@ -55,6 +79,32 @@ class SingleCampus extends Component {
                         </tbody>
                     </table>
                 </div>
+
+
+            <div className ="studentContainer">
+            {this.state.realstudents.map(student => 
+                <div>
+                  <table className = "studentTable">
+                    <tr>
+                    <img src={student.imageUrl} width="75" height="75"></img>
+                    <th className="allStudentName"> Name: {student.firstName} {student.lastName}</th>
+                    <th className="studentID">ID: {student.id}</th>
+                    {student.campusId}
+                    </tr>
+                      {/* <td>
+                        <button className ="button" onClick={() => removeStudent( student.id)}>Remove</button>
+                      </td>
+                      <td>
+                      <Link className="buttonV" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
+                      </td>
+                    <tr>
+                      <td></td>
+                    </tr> */}
+                  </table>
+                </div>
+                )}
+              </div>
+
             </div>
         );
     }
