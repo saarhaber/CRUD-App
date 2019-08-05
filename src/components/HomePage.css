@@ -1,11 +1,12 @@
-.headline {
+.HomePageHeadline {
     background-color: #212C4F;
     width: 100%;
-    padding: 15px;
+    padding: 15px 0px;
     color: white;
     text-align: center;
     
 }
+
 .leftLinkH {
     font-weight: normal;
     margin-right: 200px;
