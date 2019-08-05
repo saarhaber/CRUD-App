@@ -31,7 +31,7 @@ const AllCampuses = (props) => {
                     </tr>
                     <tr className="address">
                       <td>
-                      <Link className="buttonV" onClick={() => grabCampus(campus)} to={`/campus/${campus.id}`}>View</Link>
+                      <Link className="buttonVCampus" onClick={() => grabCampus(campus)} to={`/campus/${campus.id}`}>View</Link>
                       </td>
                       <td>
                       <p>{campus.address}</p>

@@ -30,7 +30,7 @@ const AllStudents = (props) => {
                 </tr>
                 <tr className="address">
                   <td>
-                  <Link className="buttonV" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
+                  <Link className="buttonVStudent" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
                   </td>
                   <td>
                   </td>
