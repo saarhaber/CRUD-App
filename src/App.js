@@ -68,7 +68,7 @@ class AppContainer extends Component {
   }
   render() {
     const HomeComponent = () => (<HomePage/>);
-    const AllCampusesComponent = () => (<AllCampuses campuses={this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus} grabCampus={this.grabCampus}/>);
+    const AllCampusesComponent = () => (<AllCampuses students={this.props.students} campuses={this.props.campuses} removeCampus={this.removeCampus} addCampus={this.addCampus} grabCampus={this.grabCampus}/>);
     const AddCampusComponent = () => (<AddCampus campuses = {this.props.campuses} addCampus={this.addCampus}/>);
     const AddStudentComponent = () => (<AddStudent students = {this.props.students} addStudent={this.addStudent}/>);
     const AllStudentsComponent = () => (<AllStudents students={this.props.students} removeStudent={this.removeStudent} addStudent={this.addStudent} grabStudent={this.grabStudent}/>);
@@ -79,7 +79,8 @@ class AppContainer extends Component {
           <Route exact path="/allcampuses" render={AllCampusesComponent}/>
           <Route exact path="/addcampus" render={AddCampusComponent}/>
           <Route exact path="/addStudent" render={AddStudentComponent}/>
-          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} campuses={this.props.campuses} campus ={this.props.singlecampus}/>}/>
+          <Route exact path="/campus/:id" render={(props)=> <SingleCampus {...props} students={this.props.students} campuses={this.props.campuses} campus ={this.props.singlecampus} 
+          removeStudent={this.removeStudent} addStudent={this.addStudent} grabCampus={this.grabCampus}/>}/>
           <Route exact path="/student/:id" render={(props)=> <SingleStudent {...props} student ={this.props.singlestudent}/>}/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
           <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus} campuses ={this.props.campuses} editCampus={this.editCampus}/>}/>

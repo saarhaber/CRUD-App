@@ -5,6 +5,7 @@ import './EditCampus.css';
 class EditCampus extends Component {
     constructor(props) {
         super(props)
+        console.log(this.props)
         this.state = {
             campus : this.props.campus,
             newname : this.props.campus.name,
@@ -14,6 +15,7 @@ class EditCampus extends Component {
 
 
       componentDidUpdate(){
+          console.log(this.props)
         if(this.state.campus.id === undefined){
             this.setState({
                 campus : this.props.campuses[this.props.match.params.id-1],
