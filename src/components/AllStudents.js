@@ -3,38 +3,47 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 // import SingleStudent from "./SingleStudent";
 import './AllStudents.css';
-    
+
 const AllStudents = (props) => {
     const { students, removeStudent, grabStudent } = props;
     return (
-        <div className="allStudentsContainer">
-            <h1 className = "headline">All Students</h1>
-            <div className="Links">
-            <Link className="leftLink" to="/">Home</Link><Link className="rightLink" to="/addStudent">Add Student</Link>
+      <div className ="allStudentContainer" key="studentcontainer">
+      <h1 className = "headline">All Students </h1>
+      <div className="Links" key="links">
+      <Link className="leftLink" to="/">Home</Link><Link className="rightLink" to="/addstudent">Add Student</Link>
+      </div>
+      <div className ="allstudentContainer" key="innercontainer">
+        {students.map(student => 
+            <div key={student.id}>
+              <table className = "AstudentTable">
+              <tbody>
+                <tr className="topBar">
+                  <td>
+                    <img src={student.imageUrl} width="75" height="75" alt=""></img>
+                  </td>
+                  <td className="allStudentName">
+                    <p>{student.firstName} {student.lastName}</p>
+                  </td>
+                  <td>
+                    <button className ="remove" onClick={() => removeStudent(student.id)}>x</button>
+                  </td>
+                </tr>
+                <tr className="address">
+                  <td>
+                  <Link className="buttonV" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
+                  </td>
+                  <td>
+                  </td>
+                  <td className="studentID">
+                    ID: {student.id}
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
-            <div className ="studentContainer">
-            {students.map(student => 
-                <div>
-                  <table className = "studentTable">
-                    <tr>
-                    <img src={student.imageUrl} width="75" height="75"></img>
-                    <th className="allStudentName"> Name: {student.firstName} {student.lastName}</th>
-                    <th className="studentID">ID: {student.id}</th>
-                    </tr>
-                      <td>
-                        <button className ="button" onClick={() => removeStudent( student.id)}>Remove</button>
-                      </td>
-                      <td>
-                      <Link className="buttonV" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
-                      </td>
-                    <tr>
-                      <td></td>
-                    </tr>
-                  </table>
-                </div>
-                )}
-              </div>
-        </div>
+            )}
+          </div>
+      </div>
     )
 }
 
