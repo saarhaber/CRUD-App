@@ -53,10 +53,10 @@ const singleCampus = (id) => {
 }
 // THUNK CREATOR;
 export const fetchCampusesThunk = () => (dispatch) => {
-    axios.get(`http://localhost:3000.com/api/campuses`)
+    axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
     .then(res => {
-      let allcampuses = res;
-      return allcampuses;
+        console.log(res)
+      dispatch(fetchCampuses(res.data));
     })
     .catch(err => {
       console.log(err);
