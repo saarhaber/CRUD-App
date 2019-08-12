@@ -8,8 +8,9 @@ import students from "./utilities/students";
 import campuses from "./utilities/campuses";
 import singlecampus from "./utilities/singlecampus"
 import singlestudent from "./utilities/singlestudent"
+import { items, itemsHasErrored, itemsIsLoading } from "./utilities/items"
 
-const rootReducer = combineReducers({students, campuses, singlecampus, singlestudent});
+const rootReducer = combineReducers({students, campuses, singlecampus, singlestudent, items, itemsHasErrored, itemsIsLoading});
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(applyMiddleware(thunkMiddleware, logger));
 const store = createStore(rootReducer, middleware);

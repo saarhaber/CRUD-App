@@ -4,7 +4,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 // import SingleCampus from './SingleCampus';
 import './AllCampuses.css';
-
+import { itemsFetchData } from './../store/utilities/actions/items';
 const AllCampuses = (props) => {
   const { campuses, removeCampus, grabCampus} = props;
     return (

@@ -6,7 +6,7 @@ import {fetchStudentsThunk, removeStudentThunk, addStudentThunk, singleStudentTh
 import {fetchCampusesThunk, removeCampusThunk, addCampusThunk, singleCampusThunk, editCampusThunk} from "./store/utilities/campuses";
 import {grabCampusThunk} from "./store/utilities/singlecampus";
 import {grabStudentThunk} from "./store/utilities/singlestudent";
-
+import { itemsFetchData } from './store/utilities/actions/items';
 //PAGE IMPORTS
 
 import HomePage from './components/HomePage';
@@ -30,6 +30,7 @@ class AppContainer extends Component {
   componentDidMount() {
     this.props.fetchAllStudents();
     this.props.fetchAllCampuses();
+    this.props.fetchData(`https://crud-ntsj.herokuapp.com/api/campuses`);
   }
 
   editCampus =(campuses, name, address, id)=> {
@@ -96,7 +97,10 @@ const mapState = (state) => {
     students: state.students,
     campuses: state.campuses,
     singlecampus: state.singlecampus,
-    singlestudent: state.singlestudent
+    singlestudent: state.singlestudent,
+    items: state.items,
+    hasErrored: state.itemsHasErrored,
+    isLoading: state.itemsIsLoading
   }
 }
 
@@ -113,7 +117,8 @@ const mapDispatch = (dispatch) => {
     singleCampus: (id) => dispatch(singleCampusThunk(id)),
     grabCampus: (campus) => dispatch(grabCampusThunk(campus)),
     singleStudent: (id) => dispatch(singleStudentThunk(id)),
-    grabStudent: (student) => dispatch(grabStudentThunk(student)),
+    grabStudent: (student) => dispatch(grabStudentThunk(student)),fetchData: (url) => dispatch(itemsFetchData(url))
+    ,
   }
 }
 export default connect(mapState, mapDispatch)(AppContainer);
