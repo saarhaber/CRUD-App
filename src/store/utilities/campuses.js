@@ -53,7 +53,7 @@ export const fetchCampusesThunk = () => (dispatch) => {
 
 export const removeCampusThunk = (campuses, id) => async (dispatch) => {
     await axios.delete(`https://crud-ntsj.herokuapp.com/api/campuses/${id}`)
-    axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
+    await axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
     .then(res => {
         console.log(res)
       dispatch(removeCampus(res.data));
@@ -78,10 +78,25 @@ export const editCampusThunk = (campuses, name, address, id) =>  async (dispatch
       console.log(err);
     })
 }
-export const addCampusThunk = (campus) => (dispatch) => {
-    let resolvedActionObject = addCampus(campus); 
-    dispatch(resolvedActionObject);
-}
+
+    export const addCampusThunk = (campus) => async (dispatch) => {   
+      await axios.post('https://crud-ntsj.herokuapp.com/api/campuses', {
+      name: campus.name,
+      imageUrl: campus.imageUrl,
+      address: campus.address
+        })
+        await axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
+        .then(res => {
+         console.log(res)
+         dispatch(addCampus(res.data));
+        })
+        .catch(err => {
+        console.log(err);
+        })
+    
+    }
+    
+    
 
 export const singleCampusThunk = (id) => (dispatch) => {
     let resolvedActionObject = singleCampus(id); 
@@ -96,7 +111,7 @@ export default (state = [], action) => {
         case REMOVE_CAMPUS:
             return action.payload;
         case ADD_CAMPUS:
-            return [...state, action.payload];
+            return action.payload;
         case SINGLE_CAMPUS:
             return state.filter(campus => campus.id === action.payload);
         case EDIT_CAMPUS:
