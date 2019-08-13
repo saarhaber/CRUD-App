@@ -1,6 +1,24 @@
-.addressinfo {
+.studentTitle {
     margin-left: 20px;
-    margin-bottom: 50%;
+    font-size: 18px;
+    color: #212C4F;
+    font-weight: bold;
+}
+.informationTable {
+    width : 100%;
+}
+.studentList {
+    font-weight: normal;
+    width: 100%;
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    transition: 0.3s;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+.campusaddressinfo {
+    margin-left: 20px;
     font-size: 18px;
     color: #212C4F;
     font-weight: bold;

@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './SingleCampus.css';
+import axios from 'axios';
     
 class SingleCampus extends Component {
     constructor(props) {
         super(props)
         this.state = {
             campus : this.props.campus,
-            students : this.props.students,
-            realstudents : this.props.campus.cstudents
         }
       }
 
 
-
+      componentDidMount(){
+          console.log("MOUNTED BEFORE ERROR OMG")
+          axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
+          .then(res => {
+              console.log(res)
+              this.setState({
+                  campus : this.res.data
+              })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }
       //checks to see if campus is empty (id is undefined)
       //if it is, set it to campusarray's campus at index [URL_ID - 1] 
       //if not, do nothing (to prevent an infinite loop)
@@ -24,11 +35,20 @@ class SingleCampus extends Component {
             // let temp = this.props.campuses[this.props.match.params.id-1]
             // temp = temp.cstudents
             // temp = temp.filter(student => this.props.match.params.id-1 === student.campusId)
-        
-            this.setState({
-                campus : this.props.campuses[this.props.match.params.id-1],
-                // realstudents: temp
+            axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    campus : this.res.data
+                })
             })
+            .catch(err => {
+              console.log(err);
+            })
+            // this.setState({
+            //     campus : this.props.campuses[this.props.match.params.id-1],
+            //     // realstudents: temp
+            // })
 
     }
 
@@ -72,7 +92,7 @@ class SingleCampus extends Component {
     // }
     // }
     render(){
-        console.log(this.state.students)
+        console.log(this.state.campus.students)
         console.log("this is reached", this.state.campus)
         this.props.grabCampus(this.state.campus);
         // this.test();
@@ -91,13 +111,47 @@ class SingleCampus extends Component {
                         </tr>
                         <tr>
                             <td >
-                                
                             </td>
                             <td  className="information">
-                                <table>
+                                <table className="informationTable">
                                     <tbody>
-                                <tr >
-                                    <p className="addressinfo"> Address: {this.state.campus.address}</p>
+                                <tr>
+                                    <p className="campusaddressinfo"> Address: {this.state.campus.address}</p>
+                                </tr>
+                                <tr>
+                                <div className="studentList">
+                                    <p className="studentTitle"> Students:
+                                    {this.state.campus.students.map(student => 
+                                        <div key={student.id}>
+                                            <table className = "AstudentTable">
+                                                <tbody>
+                                                    <tr className="topBar">
+                                                        <td>
+                                                            <img src={student.imageUrl} width="75" height="75" alt=""></img>
+                                                        </td>
+                                                        <td className="allStudentName">
+                                                            <p>{student.firstName} {student.lastName}</p>
+                                                        </td>
+                                                        <td>
+                                                            <button className ="remove" /*onClick={() => removeStudent(student.id)}*/>x</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr className>
+                                                        <td>
+                                                        <Link className="buttonVStudent" /*onClick={() => grabStudent(student)}*/ to={`/student/${student.id}`}>View</Link>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                        <td className="studentID">
+                                                            ID: {student.id}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        )}
+                                        </p>
+                                    </div>
                                 </tr>
                                 </tbody>
                                 </table>
@@ -108,6 +162,37 @@ class SingleCampus extends Component {
                         </tr>
                         </tbody>
                     </table>
+                    {/*
+                    {students.map(student => 
+                        <div key={student.id}>
+                            <table className = "AstudentTable">
+                                <tbody>
+                                    <tr className="topBar">
+                                        <td>
+                                            <img src={student.imageUrl} width="75" height="75" alt=""></img>
+                                        </td>
+                                        <td className="allStudentName">
+                                            <p>{student.firstName} {student.lastName}</p>
+                                        </td>
+                                        <td>
+                                            <button className ="remove" onClick={() => removeStudent(student.id)}>x</button>
+                                        </td>
+                                    </tr>
+                                    <tr className="address">
+                                        <td>
+                                        <Link className="buttonVStudent" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td className="studentID">
+                                            ID: {student.id}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        )}
+                    */}
                 </div>
 
             
