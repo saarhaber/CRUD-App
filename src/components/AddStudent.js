@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import './AddStudent.css';
+import axios from 'axios';
 
 class AddStudent extends Component {
   constructor () {
@@ -36,6 +37,10 @@ class AddStudent extends Component {
   }
 
   render () {
+    axios.get('https://picsum.photos/200/300')
+    .then(res=> {
+      console.log(res)
+    })
     return (
       <div className="Content">
                 <h2 className = "headline">Add Student </h2>
