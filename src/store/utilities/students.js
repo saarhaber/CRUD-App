@@ -13,16 +13,9 @@ const fetchStudents = (students) => {
     }
 }
 const editStudent = (students, firstName, lastName, id) => {
-    var temp = [...students]
-    for(let i = 0; i < temp.length; i++){
-        if(temp[i].id === id){
-            temp[i].firstName = firstName;
-            temp[i].lastName = lastName
-        }
-    }
     return {
         type: EDIT_STUDENT,
-        payload: temp
+        payload: students
     }
 }
 
@@ -48,8 +41,8 @@ const singleStudent = (id) => {
 }
 
 // THUNK CREATOR;
-export const fetchStudentsThunk = () => (dispatch) => {
-    axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
+export const fetchStudentsThunk = () => async (dispatch) => {
+    await axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
     .then(res => {
         console.log(res)
       dispatch(fetchStudents(res.data));
@@ -59,14 +52,32 @@ export const fetchStudentsThunk = () => (dispatch) => {
     })
 }
 
-export const removeStudentThunk = (id) => (dispatch) => {
-    let resolvedActionObject = removeStudent(id); 
-    dispatch(resolvedActionObject);
+export const removeStudentThunk = (id) => async (dispatch) => {
+    await axios.delete(`https://crud-ntsj.herokuapp.com/api/students/${id}`)
+    axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
+    .then(res => {
+        console.log(res)
+      dispatch(removeStudent(res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
-export const editStudentThunk = (students, firstName, lastName, id) => (dispatch) => {
-    let resolvedActionObject = editStudent(students, firstName, lastName, id);
-    dispatch(resolvedActionObject);
+export const editStudentThunk = (students, firstName, lastName, id) => async (dispatch) => {
+    let response = await axios.put(`https://crud-ntsj.herokuapp.com/api/students/${id}`, {
+        firstName,
+        lastName,
+    });
+    console.log(response.status)
+    axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
+    .then(res => {
+        console.log(res)
+      dispatch(editStudent(res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 export const addStudentThunk = (student) => (dispatch) => {
@@ -86,7 +97,7 @@ export default (state = [], action) => {
         case REMOVE_STUDENT:
             return state.filter(student => student.id !== action.payload);
         case ADD_STUDENT:
-            return [...state, action.payload];
+            return action.payload;
         case SINGLE_STUDENT:
             return state.filter(student => student.id === action.payload);
         case EDIT_STUDENT:

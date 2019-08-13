@@ -6,6 +6,8 @@ import './AllStudents.css';
 
 const AllStudents = (props) => {
     const { students, removeStudent, grabStudent } = props;
+    console.log(props, "OIAWHDCOIAWHCDOIAWH");
+    
     return (
       <div className ="allStudentContainer" key="studentcontainer">
       <h1 className = "headline">All Students </h1>
@@ -15,6 +17,7 @@ const AllStudents = (props) => {
       <div className ="allstudentContainer" key="innercontainer">
         {students.map(student => 
             <div key={student.id}>
+              {console.log(student.campus)}
               <table className = "AstudentTable">
               <tbody>
                 <tr className="topBar">
@@ -33,7 +36,7 @@ const AllStudents = (props) => {
                   <Link className="buttonVStudent" onClick={() => grabStudent(student)} to={`/student/${student.id}`}>View</Link>
                   </td>
                   <td>
-                    {student.campus.name}
+                    {student.campus ? student.campus.name : "No Campus Assigned"}
                   </td>
                   <td className="studentID">
                     ID: {student.id}
