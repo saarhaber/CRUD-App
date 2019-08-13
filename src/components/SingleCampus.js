@@ -12,45 +12,44 @@ class SingleCampus extends Component {
       }
 
 
-      componentDidMount(){
-          console.log("MOUNTED BEFORE ERROR OMG")
-          axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
-          .then(res => {
-              console.log(res)
-              this.setState({
-                  campus : this.res.data
-              })
-          })
-          .catch(err => {
+      async componentDidMount(){
+        try{
+            let {data} = await axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
+            this.setState({
+                campus:data
+            })
+            console.log(data)
+        }
+        catch(err){
             console.log(err);
-          })
-      }
+        }
+    }
       //checks to see if campus is empty (id is undefined)
       //if it is, set it to campusarray's campus at index [URL_ID - 1] 
-      //if not, do nothing (to prevent an infinite loop)
-      componentDidUpdate(){
-          console.log(this.state.campus.id);
-          console.log(this.props)
-        if(this.state.campus.id === undefined){
-            // let temp = this.props.campuses[this.props.match.params.id-1]
-            // temp = temp.cstudents
-            // temp = temp.filter(student => this.props.match.params.id-1 === student.campusId)
-            axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    campus : this.res.data
-                })
-            })
-            .catch(err => {
-              console.log(err);
-            })
-            // this.setState({
-            //     campus : this.props.campuses[this.props.match.params.id-1],
-            //     // realstudents: temp
-            // })
+    //   //if not, do nothing (to prevent an infinite loop)
+    //   componentDidUpdate(){
+    //       console.log(this.state.campus.id);
+    //       console.log(this.props)
+    //     if(this.state.campus.id === undefined){
+    //         // let temp = this.props.campuses[this.props.match.params.id-1]
+    //         // temp = temp.cstudents
+    //         // temp = temp.filter(student => this.props.match.params.id-1 === student.campusId)
+    //         axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
+    //         .then(res => {
+    //             console.log(res)
+    //             this.setState({
+    //                 campus : this.res.data
+    //             })
+    //         })
+    //         .catch(err => {
+    //           console.log(err);
+    //         })
+    //         // this.setState({
+    //         //     campus : this.props.campuses[this.props.match.params.id-1],
+    //         //     // realstudents: temp
+    //         // })
 
-    }
+    // }
 
 //everything commented here is for adding students to a campus
 
@@ -76,7 +75,7 @@ class SingleCampus extends Component {
     //      })
             
     // }
-    }
+    
 
     // test(){
     //     if(this.state.realstudents === undefined){
@@ -121,7 +120,7 @@ class SingleCampus extends Component {
                                 <tr>
                                 <div className="studentList">
                                     <p className="studentTitle"> Students:
-                                    {this.state.campus.students.map(student => 
+                                    {this.state.campus.students ? this.state.campus.students.map(student => 
                                         <div key={student.id}>
                                             <table className = "AstudentTable">
                                                 <tbody>
@@ -149,7 +148,7 @@ class SingleCampus extends Component {
                                                 </tbody>
                                             </table>
                                         </div>
-                                        )}
+                                        ) : ''}
                                         </p>
                                     </div>
                                 </tr>
