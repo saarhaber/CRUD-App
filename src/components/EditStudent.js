@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './EditStudent.css';
+import axios from 'axios';
     
 class EditStudent extends Component {
     constructor(props) {
@@ -8,19 +9,39 @@ class EditStudent extends Component {
         this.state = {
             student : this.props.student,
             newfirstname : this.props.student.firstName,
-            newlastName : this.props.student.lastName
+            newlastname : this.props.student.lastName,
+            newgpa : this.props.student.gpa
         }
       }
     studentFirstNameChange =(event)=>{
         this.setState({ newfirstname: event.target.value})
     }
     studentLastNameChange =(event)=>{
-        this.setState({ newlastName: event.target.value})
+        this.setState({ newlastname: event.target.value})
+    }
+    studentGPAChange =(event)=>{
+        this.setState({ newgpa: event.target.value})
     }
     handleEdit = (submit) => {
         this.props.editStudent(this.props.students, this.state.newfirstname, this.state.newlastName, this.props.student.id)
         alert("Saved!")
       }
+      async componentDidMount(){
+        try{
+            let {data} = await axios.get(`https://crud-ntsj.herokuapp.com/api/students/${this.props.match.params.id}`)
+            this.setState({
+                student:data,
+                newfirstname:data.firstName,
+                newlastname:data.lastName,
+                newgpa:data.gpa
+
+            })
+            console.log(data)
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
     render(){
         return (
             <div>
@@ -29,16 +50,19 @@ class EditStudent extends Component {
                 </h1>
                 <Link className="leftLink" to={`/student/${this.state.student.id}`}>Back</Link>
                 <div className="surroundForm">
-                    <form className = "singlestudnetForm">
+                    <form className = "singlestudentForm">
                         <table>
                         <tbody>
                         <tr>
                             <td><img src={this.state.student.imageUrl} width="150" height="150"></img> </td>    
                             <th className = "firstName">
-                                <input className="studentfirstNameField" value={this.state.newfirstname} onChange={this.studentFirstNameChange} type="text" placeholder={this.state.student.firstName}></input>
+                                First Name: <input className="studentfirstNameField" value={this.state.newfirstname} onChange={this.studentFirstNameChange} type="text" placeholder={this.state.student.firstName}></input>
                                 </th>
                                 <th>
-                                <input className="studentlastNameField" value={this.state.newlastname} onChange={this.studentLastNameChange} type="text" placeholder={this.state.student.lastName}></input>
+                                Last Name: <input className="studentlastNameField" value={this.state.newlastname} onChange={this.studentLastNameChange} type="text" placeholder={this.state.student.lastName}></input>
+                                </th>
+                                <th>
+                                GPA: <input type="number" className="studentGPAField" value={this.state.newgpa} onChange={this.studentGPAChange} type="text" placeholder={this.state.student.gpa}></input>
                                 </th>
                             <td>
                                 <tr>
