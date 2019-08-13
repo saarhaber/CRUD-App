@@ -4,6 +4,9 @@
     margin-left: 20px;
     width: 600px;
 }
+.singlestudentForm {
+    color: white; 
+}
 .studentLastNameField{
     height:50px;
     font-size:30px;
