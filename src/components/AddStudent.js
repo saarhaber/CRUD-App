@@ -27,7 +27,8 @@ class AddStudent extends Component {
       "id": this.props.students.length + 1,
       "firstName": this.state.firstName,
       "lastName": this.state.lastName,
-      "imageUrl": "https://i.imgur.com/N9Koe2G.jpg"
+      "imageUrl": "https://picsum.photos/200/300",
+      "campus": "none"
     }
     this.props.addStudent(studentToAdd)
     console.log(studentToAdd);
