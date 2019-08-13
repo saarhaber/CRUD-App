@@ -14,27 +14,15 @@ const fetchCampuses = (campuses) => {
 }
 
 const editCampus = (campuses, name, address, id) => {
-    var temp = [...campuses]
-    for(let i = 0; i < temp.length; i++){
-        if(temp[i].id === id){
-            temp[i].name = name;
-            temp[i].address = address;
-        }
-    }
     return {
         type: EDIT_CAMPUS,
-        payload: temp
+        payload: campuses
     }
 }
 const removeCampus = (campuses, id) => {
-    var temp = [...campuses]
-    temp = temp.filter(campus => campus.id !== id)
-    for(let i = id-1; i < temp.length; i++){
-        temp[i].id--;
-    }
     return {
         type: REMOVE_CAMPUS,
-        payload: temp
+        payload: campuses
     }
 }
 
@@ -63,14 +51,32 @@ export const fetchCampusesThunk = () => (dispatch) => {
     })
 }
 
-export const removeCampusThunk = (campuses, id) => (dispatch) => {
-    let resolvedActionObject = removeCampus(campuses, id); 
-    dispatch(resolvedActionObject);
+export const removeCampusThunk = (campuses, id) => async (dispatch) => {
+    await axios.delete(`https://crud-ntsj.herokuapp.com/api/campuses/${id}`)
+    axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
+    .then(res => {
+        console.log(res)
+      dispatch(removeCampus(res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
-export const editCampusThunk = (campuses, name, address, id) => (dispatch) => {
-    let resolvedActionObject = editCampus(campuses, name, address, id);
-    dispatch(resolvedActionObject);
+export const editCampusThunk = (campuses, name, address, id) =>  async (dispatch) => {
+    let response = await axios.put(`https://crud-ntsj.herokuapp.com/api/campuses/${id}`, {
+        name,
+        address
+    });
+    console.log(response.status)
+    axios.get(`https://crud-ntsj.herokuapp.com/api/campuses`)
+    .then(res => {
+        console.log(res)
+      dispatch(editCampus(res.data));
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 export const addCampusThunk = (campus) => (dispatch) => {
     let resolvedActionObject = addCampus(campus); 
