@@ -119,8 +119,11 @@ class SingleCampus extends Component {
                                 </tr>
                                 <tr>
                                 <div className="studentList">
-                                    <p className="studentTitle"> Students:
-                                    {this.state.campus.students ? this.state.campus.students.map(student => 
+                                    {this.state.campus.students ? 
+                                    <p className="studentTitle">
+                                    {this.state.campus.students.length > 0 ? 
+                                    <p className = "studentTitle"> Students:
+                                    {this.state.campus.students.map(student => 
                                         <div key={student.id}>
                                             <table className = "AstudentTable">
                                                 <tbody>
@@ -148,8 +151,10 @@ class SingleCampus extends Component {
                                                 </tbody>
                                             </table>
                                         </div>
-                                        ) : ''}
+                                        )}</p> : <p className="studentTitle">There are no students currently registered to this campus.</p>}
+                                        
                                         </p>
+                                    : ''} 
                                     </div>
                                 </tr>
                                 </tbody>

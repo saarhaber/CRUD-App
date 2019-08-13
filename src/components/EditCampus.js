@@ -78,6 +78,53 @@ class EditCampus extends Component {
                             
                             </td>
                         </tr>
+                        <tr>
+                <select>
+                    {this.props.students.map(student => 
+                    <option value={student.id}>{student.firstName + " " + student.lastName}</option>
+                    )}
+                </select>
+                </tr>
+                <tr>
+                                <div className="studentList">
+                                    {this.state.campus.students ? 
+                                    <p className="studentTitle">
+                                    {this.state.campus.students.length > 0 ? 
+                                    <p className = "studentTitle"> Students:
+                                    {this.state.campus.students.map(student => 
+                                        <div key={student.id}>
+                                            <table className = "AstudentTable">
+                                                <tbody>
+                                                    <tr className="topBar">
+                                                        <td>
+                                                            <img src={student.imageUrl} width="75" height="75" alt=""></img>
+                                                        </td>
+                                                        <td className="allStudentName">
+                                                            <p>{student.firstName} {student.lastName}</p>
+                                                        </td>
+                                                        <td>
+                                                            <button className ="remove" /*onClick={() => removeStudent(student.id)}*/>x</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr className>
+                                                        <td>
+                                                        <Link className="buttonVStudent" /*onClick={() => grabStudent(student)}*/ to={`/student/${student.id}`}>View</Link>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                        <td className="studentID">
+                                                            ID: {student.id}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        )}</p> : <p className="studentTitle">There are no students currently registered to this campus.</p>}
+                                        
+                                        </p>
+                                    : ''} 
+                                    </div>
+                                </tr>
                         </tbody>
                         </table>
                     </form>
