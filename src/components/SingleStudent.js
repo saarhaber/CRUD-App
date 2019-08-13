@@ -49,6 +49,9 @@ class SingleStudent extends Component {
                             <td>
                                 <p className="cname">Attends: {this.state.student.campus.name}</p>
                             </td>
+                            <td>
+                                <p className="cname">GPA:{this.state.student.gpa}</p>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
