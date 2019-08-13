@@ -80,10 +80,23 @@ export const editStudentThunk = (students, firstName, lastName, id) => async (di
     })
 }
 
-export const addStudentThunk = (student) => (dispatch) => {
-    let resolvedActionObject = addStudent(student); 
-    dispatch(resolvedActionObject);
-}
+export const addStudentThunk = (student) => async (dispatch) => {
+    await axios.post('https://crud-ntsj.herokuapp.com/api/students', {
+        firstName: student.firstName,
+        lastName: student.lastName,
+        imageUrl: student.imageUrl,
+
+          })
+          await axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
+          .then(res => {
+           console.log(res)
+           dispatch(addStudent(res.data));
+          })
+          .catch(err => {
+          console.log(err);
+          })
+      
+      }
 export const singleStudentThunk = (id) => (dispatch) => {
     let resolvedActionObject = singleStudent(id); 
     dispatch(resolvedActionObject);
@@ -95,7 +108,7 @@ export default (state = [], action) => {
         case FETCH_STUDENTS:
             return action.payload;
         case REMOVE_STUDENT:
-            return state.filter(student => student.id !== action.payload);
+            return action.payload;
         case ADD_STUDENT:
             return action.payload;
         case SINGLE_STUDENT:
