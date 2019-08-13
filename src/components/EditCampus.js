@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './EditCampus.css';
-    
+import axios from 'axios';
+
 class EditCampus extends Component {
     constructor(props) {
         super(props)
@@ -13,18 +14,19 @@ class EditCampus extends Component {
         }
       }
 
-
-      componentDidUpdate(){
-          console.log(this.props)
-        if(this.state.campus.id === undefined){
+    async componentDidMount(){
+        try{
+            let {data} = await axios.get(`https://crud-ntsj.herokuapp.com/api/campuses/${this.props.match.params.id}`)
             this.setState({
-                campus : this.props.campuses[this.props.match.params.id-1],
-                newname : this.props.campuses
-                [this.props.match.params.id-1].name,
-                newaddress : this.props.campuses
-                [this.props.match.params.id-1].address
-         })
-    }
+                campus:data,
+                newname:data.name,
+                newaddress:data.address
+            })
+            console.log(data)
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     campusNameChange =(event)=>{
