@@ -6,11 +6,9 @@ class AddCampus extends Component {
   constructor () {
     super()
     this.state = {
-      user: {
-        campusName: '',
-        campusAddress: '',
-        campusImageurl: '',
-      },
+      campusName: '',
+      campusAddress: '',
+      campusImageurl: `https://picsum.photos/id/${Math.floor(Math.random() * 200)}/300/300`,
       redirect: false
     }
   }
@@ -21,11 +19,7 @@ class AddCampus extends Component {
   handleChangeAddress = (event) => {
     this.setState({campusAddress: event.target.value})
   }
-  handleChangeImage = (event) => {
-    this.setState({campusImageurl: event.target.value})
-  }
 
-  
   handleSubmit = (submit) => {
     submit.preventDefault()
     const campusToAdd = {
@@ -52,10 +46,6 @@ class AddCampus extends Component {
           <div>
             <label htmlFor="campusAddress">Campus Address: </label>
             <input type="text" name="campusAddress" onChange={this.handleChangeAddress} />
-          </div>
-          <div>
-            <label htmlFor="campusImageurl">Campus Image Url: </label>
-            <input type="text" name="campusImageurl" onChange={this.handleChangeImage} />
           </div>
           <button>Add Campus</button>
         </form>
