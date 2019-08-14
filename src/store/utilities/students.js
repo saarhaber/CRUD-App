@@ -70,6 +70,7 @@ export const editStudentThunk = (student) => async (dispatch) => {
         firstName: student.firstName,
         lastName : student.lastName,
         gpa : student.gpa,
+        campusId : student.campusId
     });
     console.log(response.status)
     axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
