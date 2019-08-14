@@ -24,7 +24,7 @@ class EditStudent extends Component {
         this.setState({ newgpa: event.target.value})
     }
     studentCampusChange =(event)=>{
-        console.log("THIS IS RUNNING",event.target.value)
+        console.log("THIS IS RUNNING RUNNNNNING",event.target.value)
         this.setState({ newcampus : event.target.value})
     }
     handleEdit = (submit) => {
@@ -96,7 +96,7 @@ class EditStudent extends Component {
                             {this.props.campuses.map(campus => 
                             <option value={campus.id}>{campus.name + " ID:" + campus.id}</option>
                             )}
-                            <option value={undefined}>None</option>
+                            <option value={0}>None</option>
                         </select>
                         </td>
                         </tr>
