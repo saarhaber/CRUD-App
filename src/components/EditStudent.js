@@ -23,7 +23,7 @@ class EditStudent extends Component {
         this.setState({ newgpa: event.target.value})
     }
     handleEdit = (submit) => {
-        this.props.editStudent(this.props.students, this.state.newfirstname, this.state.newlastName, this.props.student.id)
+        this.props.editStudent(this.state.newfirstname, this.state.newlastName, this.props.newgpa, this.props.student.id)
         alert("Saved!")
       }
       async componentDidMount(){

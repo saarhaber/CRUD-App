@@ -12,7 +12,7 @@ const fetchStudents = (students) => {
         payload: students
     }
 }
-const editStudent = (students, firstName, lastName, id) => {
+const editStudent = (students) => {
     return {
         type: EDIT_STUDENT,
         payload: students
@@ -64,10 +64,11 @@ export const removeStudentThunk = (id) => async (dispatch) => {
     })
 }
 
-export const editStudentThunk = (students, firstName, lastName, id) => async (dispatch) => {
+export const editStudentThunk = (firstName, lastName, gpa, id) => async (dispatch) => {
     let response = await axios.put(`https://crud-ntsj.herokuapp.com/api/students/${id}`, {
-        firstName,
-        lastName,
+        "firstName": firstName,
+        "lastName" : lastName,
+        "gpa" : gpa,
     });
     console.log(response.status)
     axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
@@ -85,7 +86,7 @@ export const addStudentThunk = (student) => async (dispatch) => {
         firstName: student.firstName,
         lastName: student.lastName,
         imageUrl: student.imageUrl,
-
+        gpa: student.gpa,
           })
           await axios.get(`https://crud-ntsj.herokuapp.com/api/students`)
           .then(res => {
