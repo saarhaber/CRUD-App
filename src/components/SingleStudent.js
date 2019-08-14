@@ -47,7 +47,7 @@ class SingleStudent extends Component {
                                 <p className="cname">ID: {this.state.student.id}</p>
                             </td>
                             <td>
-                                <p className="cname">Attends: {this.state.student.campus.name}</p>
+                                <p className="cpname">{this.state.student.campus ? <div> Attends: {this.state.student.campus.name} <Link className="viewButton" to={`/campus/${this.state.student.campus.id}`}>View</Link></div>: ("Not Attending a Campus")}</p>
                             </td>
                             <td>
                                 <p className="cname">GPA:{this.state.student.gpa}</p>
