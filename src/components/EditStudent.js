@@ -23,7 +23,14 @@ class EditStudent extends Component {
         this.setState({ newgpa: event.target.value})
     }
     handleEdit = (submit) => {
-        this.props.editStudent(this.state.newfirstname, this.state.newlastName, this.props.newgpa, this.props.student.id)
+        submit.preventDefault()
+        const studentToEdit = {
+          "firstName": this.state.newfirstname,
+          "lastName": this.state.newlastname,
+          "gpa": this.state.newgpa,
+          "id": this.state.student.id
+        }
+        this.props.editStudent(studentToEdit)
         alert("Saved!")
       }
       async componentDidMount(){
@@ -34,7 +41,7 @@ class EditStudent extends Component {
                 newfirstname:data.firstName,
                 newlastname:data.lastName,
                 newgpa:data.gpa
-
+                
             })
             console.log(data)
         }

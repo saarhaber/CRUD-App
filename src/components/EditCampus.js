@@ -7,10 +7,13 @@ class EditCampus extends Component {
     constructor(props) {
         super(props)
         console.log(this.props)
+
         this.state = {
             campus : this.props.campus,
             newname : this.props.campus.name,
-            newaddress : this.props.campus.address
+            newaddress : this.props.campus.address,
+            students: this.props.students,
+            nonstudents: this.props.campus.students
         }
       }
 
@@ -20,9 +23,33 @@ class EditCampus extends Component {
             this.setState({
                 campus:data,
                 newname:data.name,
-                newaddress:data.address
+                newaddress:data.address,
             })
-            console.log(data)
+            //console.log(data)
+            //console.log(this.state.nonstudents);
+            console.log(this.props.students);
+            console.log(this.state.campus.students);
+            console.log(this.props.students.filter(student => !this.state.campus.students.includes(student.id)));
+            let temp = this.props.students;
+            let tempb = this.state.campus.students;
+
+            for(let i = 0; i < tempb.length; i++){
+                for(let j = 0; j < temp.length; j++){
+                    if(tempb[i].id === temp[j].id){
+                        temp.splice(j,1);
+                        j--;
+                    }
+                }
+            }
+            console.log(temp);
+
+            this.setState({
+                //for some reason this commented filter attempt doesn't work
+                //so i just filtered it manually above
+                //nonstudents: this.props.students.filter(student => !this.state.campus.students.includes(student))
+                nonstudents: temp
+            })
+            console.log(this.state.nonstudents);
         }
         catch(err){
             console.log(err);
@@ -40,6 +67,8 @@ class EditCampus extends Component {
         this.props.editCampus(this.props.campuses, this.state.newname, this.state.newaddress, this.props.campus.id)
         alert("Saved!")
       }
+
+
     render(){
         return (
             <div>
