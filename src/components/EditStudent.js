@@ -10,7 +10,8 @@ class EditStudent extends Component {
             student : this.props.student,
             newfirstname : this.props.student.firstName,
             newlastname : this.props.student.lastName,
-            newgpa : this.props.student.gpa
+            newgpa : this.props.student.gpa,
+            newcampus : this.props.student.CampusId
         }
       }
     studentFirstNameChange =(event)=>{
@@ -22,13 +23,18 @@ class EditStudent extends Component {
     studentGPAChange =(event)=>{
         this.setState({ newgpa: event.target.value})
     }
+    studentCampusChange =(event)=>{
+        console.log("THIS IS RUNNING",event.target.value)
+        this.setState({ newcampus : event.target.value})
+    }
     handleEdit = (submit) => {
         submit.preventDefault()
         const studentToEdit = {
           "firstName": this.state.newfirstname,
           "lastName": this.state.newlastname,
           "gpa": this.state.newgpa,
-          "id": this.state.student.id
+          "id": this.state.student.id,
+          "campusId": this.state.newcampus
         }
         this.props.editStudent(studentToEdit)
         alert("Saved!")
@@ -79,6 +85,20 @@ class EditStudent extends Component {
                                     <td><Link className="cancel" to={`/student/${this.state.student.id}`}>Cancel</Link></td>
                                 </tr>
                             </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            {this.state.student.campus ? <div> Attending: {this.state.student.campus.name} ID: {this.state.student.campus.id} </div>: "Not Enrolled"}
+                            <td>
+                        <select onChange={this.studentCampusChange}>
+                            {this.props.campuses.map(campus => 
+                            <option value={campus.id}>{campus.name + " ID:" + campus.id}</option>
+                            )}
+                            <option value={undefined}>None</option>
+                        </select>
+                        </td>
                         </tr>
                         </tbody>
                         </table>
