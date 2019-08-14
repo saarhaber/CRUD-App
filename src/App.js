@@ -83,7 +83,7 @@ class AppContainer extends Component {
           removeStudent={this.removeStudent} addStudent={this.addStudent} grabCampus={this.grabCampus}/>}/>
           <Route exact path="/student/:id" render={(props)=> <SingleStudent {...props} student ={this.props.singlestudent}/>}/>
           <Route exact path="/AllStudents" render={AllStudentsComponent}/>
-          <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus} students = {this.props.students} campuses ={this.props.campuses} editCampus={this.editCampus}/>}/>
+          <Route exact path="/campus/edit/:id" render={(props)=> <EditCampus {...props} campus ={this.props.singlecampus} students = {this.props.students} campuses ={this.props.campuses} removeStudent={this.removeStudent} editStudent={this.editStudent} editCampus={this.editCampus}/>}/>
          <Route exact path="/student/edit/:id" render={(props)=> <EditStudent {...props} student ={this.props.singlestudent} campuses ={this.props.campuses} students ={this.props.students} editStudent={this.editStudent}/>}/>
         </Switch>
       </Router>

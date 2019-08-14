@@ -13,7 +13,8 @@ class EditCampus extends Component {
             newname : this.props.campus.name,
             newaddress : this.props.campus.address,
             students: this.props.students,
-            nonstudents: this.props.campus.students
+            nonstudents: this.props.campus.students,
+            newstudent: this.props.students[0]
         }
       }
 
@@ -68,6 +69,23 @@ class EditCampus extends Component {
         alert("Saved!")
       }
 
+      studentAddChange =(event)=>{
+        console.log("THIS IS RUNNING",event.target.value)
+        this.setState({ newstudent : event.target.value})
+    }
+
+    handleEditStudent = (submit) => {
+        submit.preventDefault()
+        const studentToEdit = {
+        //   "firstName": this.state.newfirstname,
+        //   "lastName": this.state.newlastname,
+        //   "gpa": this.state.newgpa,
+          "id": this.state.newstudent,
+          "campusId": this.state.campus.id
+        }
+        this.props.editStudent(studentToEdit)
+        alert("Student added!")
+      }
 
     render(){
         return (
@@ -108,12 +126,16 @@ class EditCampus extends Component {
                             </td>
                         </tr>
                         <tr>
-                <select>
+                <select onChange={this.studentAddChange}>
+                    <option>Select a student</option>
                     {this.props.students.map(student => 
                     <option value={student.id}>{student.firstName + " " + student.lastName}</option>
                     )}
                 </select>
                 </tr>
+                <tr>
+                                    <td><Link className="save" onClick={this.handleEditStudent}>Add student</Link></td>
+                                </tr>
                 <tr>
                                 <div className="studentList">
                                     {this.state.campus.students ? 
