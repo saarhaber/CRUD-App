@@ -35,8 +35,8 @@ class AppContainer extends Component {
   editCampus =(campuses, name, address, id)=> {
     this.props.editCampus(campuses, name, address, id);
   }
-  editStudent =(students, firstName, lastName, id)=> {
-    this.props.editStudent(students, firstName, lastName, id);
+  editStudent =(firstName, lastName, gpa, id)=> {
+    this.props.editStudent(firstName, lastName, gpa, id);
   }
   removeStudent = (id) => {
     this.props.removeStudent(id);
@@ -103,7 +103,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     editCampus: (campuses, name, address, id) => dispatch(editCampusThunk(campuses, name, address, id)),
-    editStudent: (students, firstName, lastName, id) => dispatch(editStudentThunk(students, firstName, lastName, id)),
+    editStudent: (firstName, lastName, gpa, id) => dispatch(editStudentThunk(firstName, lastName, gpa, id)),
     fetchAllStudents: () => dispatch(fetchStudentsThunk()),
     removeStudent: ( id) => dispatch(removeStudentThunk( id)),
     addStudent: (student) => dispatch(addStudentThunk(student)),

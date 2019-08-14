@@ -9,7 +9,8 @@ class AddStudent extends Component {
     this.state = {
       user: {
         firstName: '',
-        lastName: ''
+        lastName: '',
+        gpa: 0
       },
       redirect: false
     }
@@ -21,14 +22,17 @@ class AddStudent extends Component {
   handleChangeLast = (change) => {
     this.setState({lastName: change.target.value})
   }
+  handleChangeGPA = (change) => {
+    this.setState({gpa: change.target.value})
+  }
 
   handleSubmit = (submit) => {
     submit.preventDefault()
     const studentToAdd = {
-      "id": this.props.students.length + 1,
       "firstName": this.state.firstName,
       "lastName": this.state.lastName,
-      "imageUrl": "https://picsum.photos/200/300",
+      "imageUrl": `https://picsum.photos/id/${this.props.students[this.props.students.length-1].id}/300/300`,
+      "gpa": this.state.gpa,
       "campus": "none"
     }
     this.props.addStudent(studentToAdd)
@@ -52,7 +56,9 @@ class AddStudent extends Component {
             <label htmlFor="firstName">Student First Name: </label>
             <input type="text" name="firstName" onChange={this.handleChangeFirst} value={this.state.firstName} /> <br></br>
             <label htmlFor="lastName">Student Last Name: </label> 
-            <input type="text" name="lastName" onChange={this.handleChangeLast} value={this.state.lastName} />
+            <input type="text" name="lastName" onChange={this.handleChangeLast} value={this.state.lastName} /> <br></br>
+            <label htmlFor="lastName">Student GPA: </label> 
+            <input type="number" step="0.1" name="gpa" onChange={this.handleChangeGPA} value={this.state.gpa} />
             
           </div>
           <button>Add Student</button>
